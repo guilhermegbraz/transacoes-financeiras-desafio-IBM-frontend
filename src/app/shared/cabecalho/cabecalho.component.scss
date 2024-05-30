@@ -1,0 +1,24 @@
+.mat-toolbar {
+  background-color: #0043ce;
+  padding: 1vh;
+  color: white;
+  padding-inline: 1vw;
+}
+
+img {
+  margin-right: 1vw;
+}
+
+.container-cabecalho {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.titulo {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+}
+

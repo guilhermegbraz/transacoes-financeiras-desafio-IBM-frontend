@@ -1,0 +1,13 @@
+<mat-toolbar class="container-cabecalho">
+  <div class="imagem">
+    <img ngSrc="ibm.svg" alt="Logo IBM" height="50" width="50" priority>
+  </div>
+  <div class="titulo">
+    <h1>Transações Financeiras - Desafio IBM</h1>
+  </div>
+
+  <button *ngIf="exibirBotaoHome" (click)="navegarHome()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>people</mat-icon>
+  </button>
+
+</mat-toolbar>
