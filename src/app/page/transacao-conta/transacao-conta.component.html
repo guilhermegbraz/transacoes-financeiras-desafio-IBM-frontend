@@ -1,19 +1,19 @@
 <div class="container">
-  <app-cabecalho [exibirBotaoHome]="true"></app-cabecalho>
+  <app-cabecalho [exibirBotaoHome]="true" [exibirSubtitulo]="true" [subtitulo]="subtitulo"></app-cabecalho>
   <app-container>
     <app-cabecalho-pagina [tituloPagina]="'Transações'"
-                          [exibirBotaoAdicionarRegistro]="true"
+                          [exibirBotaoAdicionarRegistro]="botaoAdicionarRegistroApto"
                           (clickBotaoAdicionarRegistro)="adicionarTransacao()"
                           [exibirPaginador]="true"
-                          [length]="0"
-                          [pageSize]="0"
-                          [pageIndex]="0"
-                          [pageSizeOptions]="[5, 10, 25, 50]"
+                          [length]="quantidadeRegistros"
+                          [pageSize]="tamanhoPagina"
+                          [pageIndex]="numeroPagina"
+                          [pageSizeOptions]="opcoesTamanhoPagina"
                           (alteracaoPagina)="mudarPagina($event)"
     >
     </app-cabecalho-pagina>
     <div *ngIf="idContaRecebido" class="tabela-wrapper">
-      <app-tabela-paginavel [dataSource]="dadosTabela" [colunas]="colunasExibicao" [exibirBotoesAcao]="true"
+      <app-tabela-paginavel [dataSource]="dadosTabela" [colunas]="colunasExibicao" [exibirBotoesAcao]="false"
                             [botoesAcao]="botoes"
 
       ></app-tabela-paginavel>
