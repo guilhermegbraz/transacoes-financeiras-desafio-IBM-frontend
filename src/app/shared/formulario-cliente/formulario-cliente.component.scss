@@ -1,0 +1,17 @@
+.formulario-cliente {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit {
+  background-color: #0043ce;
+  color: white;
+  width: 10vw;
+  border-radius: 8px;
+  padding: 1vh;
+  font-weight: bolder;
+}
+.submit:hover {
+  background-color: #032774;
+
+}

@@ -1,0 +1,29 @@
+<form class="formulario-cliente" (ngSubmit)="enviarCliente()">
+  <mat-form-field>
+    <mat-label>Digite seu nome</mat-label>
+    <input matInput
+           placeholder="Nome completo..."
+           required
+           name="nome"
+           [(ngModel)]="clienteFormulario.nome"
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Digite seu e-mail</mat-label>
+    <input matInput
+           placeholder="exemplo@exemplo.com"
+           required
+           name="email"
+           [(ngModel)]="clienteFormulario.email"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Número da conta (Opcional)</mat-label>
+    <input matInput
+           name="numeroConta"
+           [(ngModel)]="clienteFormulario.numeroConta"
+    >
+  </mat-form-field>
+  <input class="submit" type="submit" value="Enviar">
+</form>
