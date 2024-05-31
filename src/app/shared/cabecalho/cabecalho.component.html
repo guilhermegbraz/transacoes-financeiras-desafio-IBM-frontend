@@ -5,7 +5,9 @@
   <div class="titulo">
     <h1>Transações Financeiras - Desafio IBM</h1>
   </div>
-
+  <div *ngIf="exibirSubtitulo" class="subtitulo">
+    <h1>{{subtitulo}}</h1>
+  </div>
   <button *ngIf="exibirBotaoHome" (click)="navegarHome()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>people</mat-icon>
   </button>

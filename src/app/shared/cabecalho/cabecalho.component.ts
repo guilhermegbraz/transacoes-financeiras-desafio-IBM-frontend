@@ -14,7 +14,9 @@ import {Router} from "@angular/router";
   styleUrl: './cabecalho.component.scss'
 })
 export class CabecalhoComponent {
-  @Input() exibirBotaoHome: boolean = false
+  @Input() exibirBotaoHome: boolean = false;
+  @Input() subtitulo: string = "";
+  @Input() exibirSubtitulo: boolean = false;
 
   constructor(private router: Router) {
   }
