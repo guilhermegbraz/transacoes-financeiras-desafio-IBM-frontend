@@ -1,0 +1,25 @@
+<section class="titulo-paginador">
+  <div class="titulo">
+
+    {{tituloPagina}}
+    <button *ngIf="exibirBotaoAdicionarRegistro" (click)="onClickBotaoAdicionarRegistro()" mat-icon-button >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="paginador" *ngIf="exibirPaginador">
+    <mat-paginator
+      (page)="handlePageEvent($event)"
+      [length]="length"
+      [pageSize]="pageSize"
+      [disabled]="disabled"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+      [hidePageSize]="hidePageSize"
+      [pageIndex]="pageIndex"
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
+
+</section>
+

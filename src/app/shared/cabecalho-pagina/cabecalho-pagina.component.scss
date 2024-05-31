@@ -1,0 +1,19 @@
+.titulo-paginador {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: bold;
+  font-size: 26px;
+}
+.titulo h1 {
+  display: flex;
+  margin-right: 5vh;
+  align-self: flex-end;
+}
