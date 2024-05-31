@@ -16,6 +16,11 @@ import {ClienteContaService} from "../../domain/services/cliente-conta.service";
 import {ClienteApiToClienteContaParser} from "../../domain/parser/clienteApi-to-clienteConta.parser";
 import {ClienteApi, ClietePageable} from "../../domain/response-api/cliente-response";
 import {Router} from "@angular/router";
+import {HttpResponse} from "@angular/common/http";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  DialogFormularioClienteComponent
+} from "../../shared/dialog-formulario-cliente/dialog-formulario-cliente.component";
 
 
 @Component({
@@ -52,7 +57,12 @@ export class HomeClienteComponent implements OnInit{
 
   ACAO_DETALHAR_TRANSACAO = "detalharTransacao"
 
-  constructor(private router: Router, private clienteContaService: ClienteContaService, private clienteApiParser: ClienteApiToClienteContaParser) {
+  constructor(
+    private router: Router,
+    private clienteContaService: ClienteContaService,
+    private clienteApiParser: ClienteApiToClienteContaParser,
+    public dialog: MatDialog
+  ) {
     this.botoes = [{acao: this.ACAO_DETALHAR_TRANSACAO, icone: "open_in_new", descricao: "Detalhar as transações financeiras da conta"}]
     this.dadosTabela = {dados: []}
   }
@@ -61,13 +71,17 @@ export class HomeClienteComponent implements OnInit{
     this.carregarRegistros();
   }
   private carregarRegistros(): void {
-    this.clienteContaService.listar(this.tamanhoPagina,this.numeroPagina).subscribe((response: ClietePageable) => {
-      this.quantidadeRegistros = response.totalElements
-      this.dadosTabela = {dados:response.content.map((clienteApi: ClienteApi) => this.clienteApiParser.parse(clienteApi))};
+    this.clienteContaService.listar(this.tamanhoPagina,this.numeroPagina).subscribe((response: HttpResponse<ClietePageable>) => {
+      if(response.status == 200) {
+        this.quantidadeRegistros = response.body!.totalElements
+        this.dadosTabela = {dados:response.body!.content.map((clienteApi: ClienteApi) => this.clienteApiParser.parse(clienteApi))};
+      }
     })
   }
   public adicionarCliente(): void {
-    this.dadosTabela.dados.push({idCliente: 97, nome: "Joao", email: "joao@email.com", numeroConta:"32123456",  idConta: 62, saldo: 125.32, creditoDisponivel: 378})
+    const referenciaDialog =
+      this.dialog.open(DialogFormularioClienteComponent,{width: "60%"});
+    referenciaDialog.afterClosed().subscribe(_ => this.carregarRegistros());
   }
 
    public mudarPagina(evento: PageEvent): void {
