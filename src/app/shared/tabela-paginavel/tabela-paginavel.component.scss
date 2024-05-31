@@ -1,0 +1,12 @@
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 2; /* Define a ordem de empilhamento para manter o cabeçalho na frente */
+  background: white; /* Define a cor de fundo para o cabeçalho, caso contrário, será transparente */
+}
+
+.mat-header-cell {
+  background: white; /* Define a cor de fundo para as células do cabeçalho */
+}
+
