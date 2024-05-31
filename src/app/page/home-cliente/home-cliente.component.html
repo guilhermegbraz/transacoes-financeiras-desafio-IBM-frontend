@@ -1,7 +1,23 @@
 <div class="container">
   <app-cabecalho [exibirBotaoHome]="false"></app-cabecalho>
   <app-container>
-    <p> CONTEUDO DA PAGINA</p>
+    <app-cabecalho-pagina [tituloPagina]="'Clientes'"
+                          [exibirBotaoAdicionarRegistro]="true"
+                          (clickBotaoAdicionarRegistro)="adicionarCliente()"
+                          [exibirPaginador]="true"
+                          [length]="10"
+                          [pageSize]="10"
+                          [pageIndex]="0"
+                          [pageSizeOptions]="[5, 10, 25, 50]"
+                          (alteracaoPagina)="mudarPagina($event)"
+    >
+    </app-cabecalho-pagina>
+    <div class="tabela-wrapper">
+      <app-tabela-paginavel [dataSource]="dadosTabela" [colunas]="colunasExibicao" [exibirBotoesAcao]="true"
+                            [botoesAcao]="botoes"
+
+      ></app-tabela-paginavel>
+    </div>
   </app-container>
   <app-rodape></app-rodape>
 </div>
