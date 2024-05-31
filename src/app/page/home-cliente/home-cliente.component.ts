@@ -43,7 +43,6 @@ export class HomeClienteComponent implements OnInit{
     {nomeAtributo: "creditoDisponivel", labelAtributo: "Credito disponível"},
   ]
 
-  dadosCliente: ClienteConta[] = [];
   dadosTabela: DadosTabela<ClienteConta>;
   botoes: BotaoAcao[];
   quantidadeRegistros: number = 0;
@@ -64,13 +63,11 @@ export class HomeClienteComponent implements OnInit{
   private carregarRegistros(): void {
     this.clienteContaService.listar(this.tamanhoPagina,this.numeroPagina).subscribe((response: ClietePageable) => {
       this.quantidadeRegistros = response.totalElements
-      this.dadosCliente = response.content.map((clienteApi: ClienteApi) => this.clienteApiParser.parse(clienteApi));
-      this.dadosTabela.dados = this.dadosCliente;
+      this.dadosTabela = {dados:response.content.map((clienteApi: ClienteApi) => this.clienteApiParser.parse(clienteApi))};
     })
   }
   public adicionarCliente(): void {
-   this.dadosCliente.push({idCliente: 97, nome: "Joao", email: "joao@email.com", numeroConta:"32123456",  idConta: 62, saldo: 125.32, creditoDisponivel: 378})
-    this.dadosTabela = {dados: this.dadosCliente}
+    this.dadosTabela.dados.push({idCliente: 97, nome: "Joao", email: "joao@email.com", numeroConta:"32123456",  idConta: 62, saldo: 125.32, creditoDisponivel: 378})
   }
 
    public mudarPagina(evento: PageEvent): void {
