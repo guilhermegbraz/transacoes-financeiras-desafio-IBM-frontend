@@ -1,4 +1,4 @@
-:host {
+:host{
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -6,6 +6,10 @@
 
   margin: 1vh auto;
   width: 80vw;
-  padding-inline: 2vw;
+  padding-inline: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
