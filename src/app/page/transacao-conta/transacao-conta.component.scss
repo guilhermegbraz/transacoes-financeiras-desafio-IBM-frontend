@@ -1,0 +1,19 @@
+.container {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+app-cabecalho, app-rodape {
+  flex-shrink: 0;
+}
+
+app-cabecalho-pagina {
+  flex-shrink: 0;
+}
+.tabela-wrapper {
+  flex-grow: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}

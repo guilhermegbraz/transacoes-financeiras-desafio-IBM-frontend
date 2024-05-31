@@ -1,0 +1,26 @@
+<div class="container">
+  <app-cabecalho [exibirBotaoHome]="true"></app-cabecalho>
+  <app-container>
+    <app-cabecalho-pagina [tituloPagina]="'Transações'"
+                          [exibirBotaoAdicionarRegistro]="true"
+                          (clickBotaoAdicionarRegistro)="adicionarTransacao()"
+                          [exibirPaginador]="true"
+                          [length]="0"
+                          [pageSize]="0"
+                          [pageIndex]="0"
+                          [pageSizeOptions]="[5, 10, 25, 50]"
+                          (alteracaoPagina)="mudarPagina($event)"
+    >
+    </app-cabecalho-pagina>
+    <div *ngIf="idContaRecebido" class="tabela-wrapper">
+      <app-tabela-paginavel [dataSource]="dadosTabela" [colunas]="colunasExibicao" [exibirBotoesAcao]="true"
+                            [botoesAcao]="botoes"
+
+      ></app-tabela-paginavel>
+    </div>
+    <div *ngIf="!idContaRecebido">
+      <p>Necessário passar um identificador de conta para vizualizar as transações</p>
+    </div>
+  </app-container>
+  <app-rodape></app-rodape>
+</div>
