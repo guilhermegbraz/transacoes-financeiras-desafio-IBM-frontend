@@ -24,13 +24,14 @@ import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 })
 export class FormularioClienteComponent {
 
-  clienteFormulario: CadastroClienteDto = {id: "", nome: "", email: "", numeroConta: ""};
+  clienteFormulario: CadastroClienteDto = {id: "", nome: "", idade: 18 , email: "", numeroConta: ""};
 
   constructor(private dialogRef: MatDialogRef<FormularioClienteComponent>,
               private clienteContaService: ClienteContaService,
               private snackBar: MatSnackBar) {
   }
   enviarCliente(): void {
+    this.clienteFormulario.idade = Math.floor(this.clienteFormulario.idade);
     this.clienteContaService.cadastrarCliente(this.clienteFormulario).subscribe(
       {
         next: (response: HttpResponse<ClienteApi>) => {
@@ -42,7 +43,12 @@ export class FormularioClienteComponent {
           }
         },
         error: (response: HttpErrorResponse) => {
-          this.snackBar.open(`Erro ao cadastrar cliente: ${response.error}`, 'Fechar', {
+          let mensagemErro = response.error
+          if(Array.isArray(response.error)) {
+            mensagemErro = "";
+            response.error.forEach((erro) => {mensagemErro += erro.campo + " - " + erro.mensagem + "; "})
+          }
+          this.snackBar.open(`Erro ao cadastrar cliente: ${mensagemErro}`, 'Fechar', {
             duration: 5000
           })
         }

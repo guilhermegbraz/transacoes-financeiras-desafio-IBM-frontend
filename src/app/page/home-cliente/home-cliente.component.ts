@@ -40,8 +40,9 @@ import {
 export class HomeClienteComponent implements OnInit{
 
   COLUNAS_EXIBIDAS: CabecalhoTabela[] = [
-    {nomeAtributo: "idCliente", labelAtributo: "Identificador"},
+    {nomeAtributo: "idConta", labelAtributo: "Identificador"},
     {nomeAtributo: "nome", labelAtributo: "Nome cliente"},
+    {nomeAtributo: "idade", labelAtributo: "Idade cliente"},
     {nomeAtributo: "email", labelAtributo: "Email cliente"},
     {nomeAtributo: "numeroConta", labelAtributo: "Número conta cliente"},
     {nomeAtributo: "saldo", labelAtributo: "Saldo disponivel"},

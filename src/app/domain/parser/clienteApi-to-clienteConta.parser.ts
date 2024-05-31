@@ -12,6 +12,7 @@ export class ClienteApiToClienteContaParser {
     return {
       idCliente: clienteApi.id,
       nome: clienteApi.nome,
+      idade: clienteApi.idade,
       email: clienteApi.email,
       numeroConta: clienteApi.contaBancaria.numeroConta,
       idConta: clienteApi.contaBancaria.id,

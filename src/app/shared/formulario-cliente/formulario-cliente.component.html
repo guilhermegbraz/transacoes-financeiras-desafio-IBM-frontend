@@ -10,6 +10,17 @@
   </mat-form-field>
 
   <mat-form-field>
+    <mat-label>Digite sua idade</mat-label>
+    <input matInput
+           type="number"
+           placeholder="Nome completo..."
+           required
+           name="idade"
+           [(ngModel)]="clienteFormulario.idade"
+    >
+  </mat-form-field>
+
+  <mat-form-field>
     <mat-label>Digite seu e-mail</mat-label>
     <input matInput
            placeholder="exemplo@exemplo.com"

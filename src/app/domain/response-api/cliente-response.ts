@@ -10,6 +10,7 @@ export interface ClienteApi {
   id: number,
   nome: string,
   email: string;
+  idade: number;
   contaBancaria: ContaBancariaApi;
 }
 
