@@ -1,0 +1,31 @@
+<form class="formulario-transacao" (ngSubmit)="enviarTransacao()">
+  <p>Valores positivos são acrescentados em seu saldo ou crédito disponível, valores negativos são consumidos do seu saldo ou crédito disponível.</p>
+  <mat-form-field>
+    <mat-label>Tipo da transação</mat-label>
+    <mat-select required
+                name="tipo"
+                [(ngModel)]="transacaoFormulario.tipo">
+      <mat-option value="CREDITO">Crédito</mat-option>
+      <mat-option value="DEBITO">Débito</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Valor transação</mat-label>
+    <input matInput
+           placeholder="5"
+           required
+           name="valor"
+           type="number"
+           [(ngModel)]="transacaoFormulario.valor"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descrição da transferencia (Opcional)</mat-label>
+    <input matInput
+           name="descricao"
+           [(ngModel)]="transacaoFormulario.descricao"
+    >
+  </mat-form-field>
+  <input class="submit" type="submit" value="Enviar">
+</form>
