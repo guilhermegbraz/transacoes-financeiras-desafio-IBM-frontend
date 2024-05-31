@@ -43,7 +43,7 @@ export interface EntidadeAcao<T> {
 })
 
 export class TabelaPaginavelComponent<T> implements AfterViewInit, OnChanges{
-  @Input() colunas: CabecalhoTabela[] = [];
+  @Input() colunas: CabecalhoTabela[]  = [];
   @Input() dataSource!: DadosTabela<T>;
   @Input() exibirBotoesAcao: boolean = false;
   @Input() botoesAcao: BotaoAcao[] = [];
@@ -58,14 +58,19 @@ export class TabelaPaginavelComponent<T> implements AfterViewInit, OnChanges{
   }
 
   public renderTable(): void {
-    if(this.table) this.table.renderRows();
-    this.colunasExibidas = this.colunas.map(c => c.nomeAtributo)
-    if(this.exibirBotoesAcao) this.colunasExibidas.push("Ação");
-
+    if(this.isDadosValidos()) {
+      if(this.table) this.table.renderRows();
+      if(this.colunas) this.colunasExibidas = this.colunas.map(c => c.nomeAtributo)
+      if(this.exibirBotoesAcao) this.colunasExibidas.push("Ação");
+    }
   }
 
   public emitirClickBotao(registro: T, acao: string) {
     this.clickBotaoAcao.emit({entidade: registro, acao: acao})
+  }
+
+  isDadosValidos(): boolean {
+    return this.colunas != null && this.dataSource != undefined
   }
 
 

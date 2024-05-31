@@ -1,5 +1,5 @@
 <section class="tabela-scroll">
-  <table mat-table [dataSource]="dataSource.dados" class="mat-elevation-z8">
+  <table *ngIf="isDadosValidos()" mat-table [dataSource]="dataSource.dados" class="mat-elevation-z8">
     <ng-container *ngFor="let coluna of colunas" matColumnDef="{{coluna['nomeAtributo']}}">
       <th mat-header-cell *matHeaderCellDef> {{coluna['labelAtributo']}}</th>
       <td mat-cell *matCellDef="let element"> {{element[coluna['nomeAtributo']]}} </td>
