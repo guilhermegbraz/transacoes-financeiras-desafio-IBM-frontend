@@ -3,6 +3,6 @@ export interface TransacaoFinanceira {
   idConta: number,
   tipoTransacao: string,
   valor: number,
-  data: Date,
+  data: string,
   descricao: string | null;
 }

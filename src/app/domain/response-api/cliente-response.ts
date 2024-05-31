@@ -18,4 +18,5 @@ export interface ContaBancariaApi {
   numeroConta: string,
   saldo: number,
   creditoDisponivel: number;
+  cliente?: ClienteApi
 }

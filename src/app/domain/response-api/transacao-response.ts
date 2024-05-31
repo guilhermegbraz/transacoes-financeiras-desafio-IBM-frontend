@@ -11,7 +11,7 @@ export interface TransacaoApi {
   idConta: number,
   tipo: string,
   valor: number
-  data: Date,
+  data: string,
   descricao: string | null
 
 }
